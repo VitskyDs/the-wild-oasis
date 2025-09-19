@@ -7,15 +7,17 @@ import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
 import styled from "styled-components";
 
+const FormRowVertical = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 24px 0;
+`;
+
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
-
-  const FormRowVertical = styled.div`
-    display: flex;
-    direction: column;
-  `;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,6 +36,8 @@ function LoginForm() {
   return (
     <Form type="regular" onSubmit={handleSubmit}>
       <FormRowVertical label="Email address">
+        <label htmlFor="email">Email address</label>
+
         <Input
           type="email"
           id="email"
@@ -46,6 +50,8 @@ function LoginForm() {
       </FormRowVertical>
 
       <FormRowVertical label="Password">
+        <label htmlFor="password">Password</label>
+
         <Input
           type="password"
           id="password"
